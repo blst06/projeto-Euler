@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: cartivore-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        generateValue: true        # Render gera automaticamente um valor seguro
+      - key: FRONTEND_URL
+        value: https://cartivore.vercel.app  # ⚠ Atualize com a URL real do Vercel
+      - key: DB_PATH
+        value: /var/data/cartivore.db
+    disk:
+      name: cartivore-data
+      mountPath: /var/data
+      sizeGB: 1

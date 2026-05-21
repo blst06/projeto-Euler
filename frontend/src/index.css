@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cartivore — Paleta: azul petróleo escuro + verde esmeralda como acento */
+    --background: 220 20% 97%;
+    --foreground: 220 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+    --primary: 195 80% 28%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 25% 20%;
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 158 60% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 195 80% 28%;
+    --radius: 0.5rem;
+    
+    /* Status colors */
+    --status-adimplente: 158 60% 40%;
+    --status-risco: 38 90% 50%;
+    --status-inadimplente: 0 72% 51%;
+    --status-bloqueado: 220 15% 45%;
+  }
+
+  .dark {
+    --background: 222 28% 8%;
+    --foreground: 220 15% 92%;
+    --card: 222 25% 11%;
+    --card-foreground: 220 15% 92%;
+    --popover: 222 25% 11%;
+    --popover-foreground: 220 15% 92%;
+    --primary: 195 75% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 20% 16%;
+    --secondary-foreground: 220 15% 80%;
+    --muted: 222 20% 14%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 158 55% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 20% 18%;
+    --input: 222 20% 18%;
+    --ring: 195 75% 45%;
+
+    --status-adimplente: 158 55% 45%;
+    --status-risco: 38 85% 55%;
+    --status-inadimplente: 0 65% 55%;
+    --status-bloqueado: 220 15% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* Animações */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out both;
+}
+
+/* Status badges */
+.status-adimplente {
+  @apply bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400;
+}
+.status-risco {
+  @apply bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400;
+}
+.status-inadimplente {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+}
+.status-bloqueado {
+  @apply bg-gray-100 text-gray-600 dark:bg-gray-900/30 dark:text-gray-400;
+}
